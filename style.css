@@ -1,0 +1,26 @@
+
+
+
+body {
+    background-color: aquamarine;
+}
+
+#container {
+    background-color: lightblue;
+    width: 960px;
+    height: 960px
+
+}
+
+.row {
+    display: flex;
+}
+
+.square {
+    display: flex;
+    width: 60px;
+    height: 60px;
+    background-color: aqua;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
