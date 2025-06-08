@@ -8,7 +8,7 @@ let num = 16;
 function hoverEffect() {
     const squares = document.querySelectorAll(".square");
     squares.forEach(square => square.addEventListener('mouseover', mouseenter));
-    squares.forEach(square => square.addEventListener("mouseout", mouseexit));
+    //squares.forEach(square => square.addEventListener("mouseout", mouseexit));
 }
 
 function setUpGrid(num) {
@@ -31,11 +31,21 @@ function setUpGrid(num) {
 setUpGrid(num);
 
 function mouseenter(e) {
-    e.target.classList.add("highlighted");
+    let currentOpacity = Number(e.target.style.opacity);
+    if (e.target.style.backgroundColor == "") {
+    const randomColor = "#"+((1<<24)*Math.random()|0).toString(16);
+    e.target.style.opacity = 0.1;
+    e.target.style.backgroundColor = randomColor;
+    }   
+    else {
+        if (currentOpacity < 1) {
+            e.target.style.opacity = currentOpacity + 0.1;   
+        }
+    }
 }
 
 function mouseexit(e) {
-    e.target.classList.remove("highlighted");
+    e.target.setAttribute("style", "backgroundColor: white");
 }
 
 
@@ -55,6 +65,4 @@ function userInput() {
     setUpGrid(input);
 }
 
-userBtn.addEventListener('click', userInput)
-
-
+userBtn.addEventListener('click', userInput);
