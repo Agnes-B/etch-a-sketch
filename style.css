@@ -18,7 +18,7 @@ body {
 button {
     display: flex;
     justify-content: center;
-    background-color: lightgray);
+    background-color: lightgray;
     padding: 12px;
     margin: 10px;
     border-radius: 8px;
