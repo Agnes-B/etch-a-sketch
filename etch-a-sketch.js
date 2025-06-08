@@ -17,13 +17,17 @@ header.appendChild(changeStyleBtn);
 function changeDrawingStyle() {
     if (drawInColor) {
         drawInColor = false;
-        changeStyleBtn.textContent = "Draw in pretty random colors";
+        changeStyleBtn.textContent = "Use pretty random colors";
       
     }
     else {
         drawInColor = true;
         changeStyleBtn.textContent = "Draw in black and white";
 
+    }
+    let startNewGrid = confirm("Would you like to reset the grid?")
+    if (startNewGrid) {
+        userInput();
     }
 }
 
@@ -51,8 +55,6 @@ function setUpGrid(num) {
     hoverEffect();
 }
 
-setUpGrid(num);
-
 function mouseenter(e) {
     let currentOpacity = Number(e.target.style.opacity);
     if (e.target.style.backgroundColor == "") {
@@ -71,9 +73,6 @@ function mouseenter(e) {
     }
 }
 
-
-
-
 const rows = document.querySelectorAll("row");
 
 function deleteGrid() {
@@ -88,6 +87,8 @@ function userInput() {
     deleteGrid();
     setUpGrid(input);
 }
+
+setUpGrid(num);
 
 userBtn.addEventListener('click', userInput);
 changeStyleBtn.addEventListener('click', changeDrawingStyle);
