@@ -1,9 +1,35 @@
-const container = document.querySelector('#container');
+const header = document.querySelector("#header");
 
 const userBtn = document.createElement("button");
+userBtn.textContent = "Choose number of squares";
 
+const changeStyleBtn = document.createElement("button");
+changeStyleBtn.textContent = "Draw in black and white"
 
 let num = 16;
+let drawInColor = true;
+
+header.appendChild(userBtn);
+header.appendChild(changeStyleBtn);
+
+
+
+function changeDrawingStyle() {
+    if (drawInColor) {
+        drawInColor = false;
+        changeStyleBtn.textContent = "Draw in pretty random colors";
+      
+    }
+    else {
+        drawInColor = true;
+        changeStyleBtn.textContent = "Draw in black and white";
+
+    }
+}
+
+
+const container = document.querySelector('#container');
+
 
 function hoverEffect() {
     const squares = document.querySelectorAll(".square");
@@ -11,8 +37,6 @@ function hoverEffect() {
 }
 
 function setUpGrid(num) {
-    userBtn.textContent = "Choose number of squares";
-    container.appendChild(userBtn);
     for (let i = 0; i < num; i++) {
         const row = document.createElement('div');
         row.setAttribute("class", "row");
@@ -32,11 +56,15 @@ setUpGrid(num);
 function mouseenter(e) {
     let currentOpacity = Number(e.target.style.opacity);
     if (e.target.style.backgroundColor == "") {
-    const randomColor = "#"+((1<<24)*Math.random()|0).toString(16);
-    e.target.style.opacity = 0.1;
-    e.target.style.backgroundColor = randomColor;
-    }   
-    else {
+        e.target.style.opacity = 0.1;
+
+        if (drawInColor) {
+            const randomColor = "#"+((1<<24)*Math.random()|0).toString(16);
+            e.target.style.backgroundColor = randomColor;
+        } else {
+            e.target.style.backgroundColor = "black";
+        }
+    } else {
         if (currentOpacity < 1) {
             e.target.style.opacity = currentOpacity + 0.1;   
         }
@@ -45,12 +73,12 @@ function mouseenter(e) {
 
 
 
+
 const rows = document.querySelectorAll("row");
 
 function deleteGrid() {
     container.replaceChildren();
 }
-
 
 function userInput() {
     let input = Number(prompt("Enter a value here"));
@@ -62,3 +90,4 @@ function userInput() {
 }
 
 userBtn.addEventListener('click', userInput);
+changeStyleBtn.addEventListener('click', changeDrawingStyle);
