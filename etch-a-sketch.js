@@ -25,7 +25,6 @@ function setUpGrid(num) {
         }
     container.appendChild(row);
     }
-    console.log("viewport height: " + visualViewport.height);
     hoverEffect();
 }
 
@@ -50,7 +49,6 @@ function deleteGrid() {
 function userInput() {
     let input = Number(prompt("Enter a value here"));
     while (input > 100 || !Number.isInteger(input)) {
-        console.log(input + typeof(input));
         input = Number(prompt("Enter a number up to 100."));
     } 
     deleteGrid();
