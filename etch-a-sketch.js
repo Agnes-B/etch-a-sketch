@@ -20,10 +20,12 @@ function setUpGrid(num) {
         for (let j = 0; j < num; j++) {
             const div = document.createElement('div');
             div.setAttribute("class", "square");
+            div.setAttribute("style", `width: ${(visualViewport.height-80)/num}px; height: ${(visualViewport.height-80)/num}px`);
             row.appendChild(div);
         }
     container.appendChild(row);
     }
+    console.log("viewport height: " + visualViewport.height);
     hoverEffect();
 }
 
@@ -41,16 +43,18 @@ function mouseexit(e) {
 const rows = document.querySelectorAll("row");
 
 function deleteGrid() {
-    console.log("deleteGrid called");
     container.replaceChildren();
 }
 
 
 function userInput() {
-    let input = prompt("Enter a value here");
+    let input = Number(prompt("Enter a value here"));
+    while (input > 100 || !Number.isInteger(input)) {
+        console.log(input + typeof(input));
+        input = Number(prompt("Enter a number up to 100."));
+    } 
     deleteGrid();
     setUpGrid(input);
-    console.log(squares);
 }
 
 userBtn.addEventListener('click', userInput)
