@@ -24,3 +24,8 @@ body {
     border: 1px solid black;
     box-sizing: border-box;
 }
+
+.highlighted {
+    background-color: black;
+    /*transition: all 1s ease;*/
+}

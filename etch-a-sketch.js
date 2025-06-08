@@ -12,8 +12,13 @@ for (let i = 0; i < 16; i++) {
 }
 
 function mouseenter(e) {
-    console.log(e);
+    e.target.classList.add("highlighted");
+}
+
+function mouseexit(e) {
+    e.target.classList.remove("highlighted");
 }
 
 const squares = document.querySelectorAll(".square");
 squares.forEach(square => square.addEventListener('mouseover', mouseenter));
+squares.forEach(square => square.addEventListener("mouseout", mouseexit));
