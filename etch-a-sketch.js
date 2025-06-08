@@ -8,7 +8,6 @@ let num = 16;
 function hoverEffect() {
     const squares = document.querySelectorAll(".square");
     squares.forEach(square => square.addEventListener('mouseover', mouseenter));
-    //squares.forEach(square => square.addEventListener("mouseout", mouseexit));
 }
 
 function setUpGrid(num) {
@@ -44,9 +43,6 @@ function mouseenter(e) {
     }
 }
 
-function mouseexit(e) {
-    e.target.setAttribute("style", "backgroundColor: white");
-}
 
 
 const rows = document.querySelectorAll("row");
