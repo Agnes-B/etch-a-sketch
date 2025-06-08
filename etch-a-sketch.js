@@ -71,8 +71,6 @@ function mouseenter(e) {
     }
 }
 
-//const rows = document.querySelectorAll("row");
-
 function deleteGrid() {
     container.replaceChildren();
 }
