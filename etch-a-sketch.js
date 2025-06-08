@@ -1,4 +1,6 @@
 const header = document.querySelector("#header");
+const container = document.querySelector('#container');
+
 
 const userBtn = document.createElement("button");
 userBtn.textContent = "Choose number of squares";
@@ -6,12 +8,11 @@ userBtn.textContent = "Choose number of squares";
 const changeStyleBtn = document.createElement("button");
 changeStyleBtn.textContent = "Draw in black and white"
 
-let num = 16;
-let drawInColor = true;
-
 header.appendChild(userBtn);
 header.appendChild(changeStyleBtn);
 
+let num = 16;
+let drawInColor = true;
 
 
 function changeDrawingStyle() {
@@ -30,9 +31,6 @@ function changeDrawingStyle() {
         userInput();
     }
 }
-
-
-const container = document.querySelector('#container');
 
 
 function hoverEffect() {
@@ -73,7 +71,7 @@ function mouseenter(e) {
     }
 }
 
-const rows = document.querySelectorAll("row");
+//const rows = document.querySelectorAll("row");
 
 function deleteGrid() {
     container.replaceChildren();
